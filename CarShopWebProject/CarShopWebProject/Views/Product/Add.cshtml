@@ -1,0 +1,53 @@
+﻿@model ProductFormModel
+
+<div class="row" style="width:800px; height:850px; background-color:darkgrey; margin:20px; border:5px solid; border-radius:10px; border-color:darkgrey">
+    <div class="col-md-6 offset-md-3 col-sm-12">
+        <form method="post">
+            <h2 class="text-center" style="color:white; margin-top:5px;">Add Product</h2>
+            <div class="form-group" style="color:white;">
+                <label asp-for="Tittle"></label>
+                <input asp-for="Tittle" class="form-control" placeholder="Write car model...">
+            </div>
+            <div class="form-group" style="color:white;">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="form-control" placeholder="Write car price...">
+            </div>
+            <div class="form-group" style="color:white;">
+                <label asp-for="Year"></label>
+                <input asp-for="Year" class="form-control" placeholder="@DateTime.UtcNow.Year">
+            </div>
+            <div class="form-group" style="color:white;">
+                <label asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control" placeholder="Paste image URL">
+            </div>
+            <div class="form-group" style="color:white;">
+                <label asp-for="Company"></label>
+                <input asp-for="Company" class="form-control" placeholder="Paste image URL">
+            </div>
+            <div class="form-group" style="color:white;">
+                <label asp-for="Description" placeholder="Write some information"></label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="form-group" style="color:white;">
+                <label asp-for="PlatformId" placeholder="Write some information"></label>
+                <select asp-for="PlatformId" class="form-group">
+                    @foreach (var platform in Model.Platforms)
+                    {
+                        <option value="@platform.Id">@platform.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group" style="color:white;">
+                <label asp-for="CategoryId" placeholder="Write some information"></label>
+                <select asp-for="CategoryId" class="form-group">
+                    @foreach (var category in Model.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+            </div>
+            <input class="btn" style="background-color:white;" type="submit" value="Save" />
+        </form>
+    </div>
+</div>
+
