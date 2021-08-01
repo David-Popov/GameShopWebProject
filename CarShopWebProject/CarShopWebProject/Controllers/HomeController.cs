@@ -23,11 +23,31 @@ namespace CarShopWebProject.Controllers
 
         public IActionResult Index()
         {
-            return View(new ProductFormModel {Platforms = productService.GetProductPlatforms() });
+            ViewBag.Platforms = productService.GetProductPlatforms();
+            var takeProduct = db
+                .Product
+                .OrderByDescending(c => c.Id)
+                .Select(x => new ProductFormModel
+                {
+                    Tittle = x.Tittle,
+                    Price = x.Price,
+                    Year = x.Year,
+                    Description = x.Description,
+                    ImageUrl = x.ImageUrl,
+                    Company = x.Company,
+                    CategoryId = x.CategoryId,
+                    PlatformId = x.PlatformId
+                })
+                .Take(3)
+                .ToList();
+
+
+            return View(takeProduct);
         }
 
         public IActionResult Privacy()
         {
+            ViewBag.Platforms = productService.GetProductPlatforms();
             return View();
         }
 

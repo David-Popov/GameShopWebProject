@@ -21,6 +21,8 @@ namespace CarShopWebProject.Controllers
         }
         public IActionResult Add()
         {
+            ViewBag.Platforms = productService.GetProductPlatforms();
+
             return View(new ProductFormModel { Categories = productService.GetProductCategories(),Platforms = productService.GetProductPlatforms() });
         }
 
@@ -34,11 +36,58 @@ namespace CarShopWebProject.Controllers
                 product.Description,
                 product.ImageUrl,
                 product.Company,
-                product.CategoryId);
+                product.CategoryId,
+                product.PlatformId);
 
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult Platforms(string id, string searchTerm)
+        {
+            var productQuerry = db.Product.AsQueryable();
+
+
+            if (id == null)
+            {
+                return BadRequest();
+            }
+
+            var products = productService.GetProductsByPlatformId(id);
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                productQuerry = productQuerry.Where(x =>
+                x.Tittle.ToLower().Contains(searchTerm.ToLower()) ||
+                x.Company.ToLower().Contains(searchTerm.ToLower()));
+
+                 products = productQuerry
+                .OrderByDescending(c => c.Id)
+                .Select(x => new ProductFormModel
+                {
+                    Tittle = x.Tittle,
+                    Price = x.Price,
+                    Year = x.Year,
+                    Description = x.Description,
+                    ImageUrl = x.ImageUrl,
+                    Company = x.Company,
+                    CategoryId = x.CategoryId,
+                    PlatformId = x.PlatformId
+                }).ToList();
+            }
+
+            if (products == null) return NotFound();
+
+            var viewmodel = new PlatformGamesViewModel();
+
+            viewmodel.Products = products;
+
+            ViewBag.Platforms = productService.GetProductPlatforms();
+
+
+            return View(viewmodel);
+        }
+
+       
         private IEnumerable<CategoryFormModel> GetProductCategories()
          => db.Category
                .Select(x => new CategoryFormModel

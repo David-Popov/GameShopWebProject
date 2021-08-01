@@ -1,5 +1,4 @@
-﻿@model ProductFormModel 
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -21,14 +20,14 @@
                     <div class="dropdown">
                         <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Gaming
+                            Platforms
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <ul style="list-style:none;">
-                                @foreach (var platformType in Model.Platforms)
+                                @foreach (var platformType in ViewBag.Platforms)
                                 {
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-area="" asp-controller="AddProduct" asp-action="Add">@platformType.Name</a>
+                                        <a class="nav-link text-dark" asp-route-id="@platformType.Id" asp-controller="Product" asp-action="Platforms">@platformType.Name</a>
                                     </li>
                                 }
                             </ul>

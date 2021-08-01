@@ -1,16 +1,16 @@
 ﻿@model ProductFormModel
 
-<div class="row" style="width:800px; height:850px; background-color:darkgrey; margin:20px; border:5px solid; border-radius:10px; border-color:darkgrey">
+<div class="row" style="">
     <div class="col-md-6 offset-md-3 col-sm-12">
         <form method="post">
-            <h2 class="text-center" style="color:white; margin-top:5px;">Add Product</h2>
+            <h2 class="text-center text-dark" style="color:white; margin-top:5px;">Add Product</h2>
             <div class="form-group" style="color:white;">
                 <label asp-for="Tittle"></label>
-                <input asp-for="Tittle" class="form-control" placeholder="Write car model...">
+                <input asp-for="Tittle" class="form-control" placeholder="Write product tittle...">
             </div>
             <div class="form-group" style="color:white;">
                 <label asp-for="Price"></label>
-                <input asp-for="Price" class="form-control" placeholder="Write car price...">
+                <input asp-for="Price" class="form-control" placeholder="Write product price...">
             </div>
             <div class="form-group" style="color:white;">
                 <label asp-for="Year"></label>
@@ -22,14 +22,14 @@
             </div>
             <div class="form-group" style="color:white;">
                 <label asp-for="Company"></label>
-                <input asp-for="Company" class="form-control" placeholder="Paste image URL">
+                <input asp-for="Company" class="form-control" placeholder="Write the company of the product">
             </div>
             <div class="form-group" style="color:white;">
                 <label asp-for="Description" placeholder="Write some information"></label>
                 <textarea asp-for="Description" class="form-control" rows="3"></textarea>
             </div>
-            <div class="form-group" style="color:white;">
-                <label asp-for="PlatformId" placeholder="Write some information"></label>
+            <div class="form-group float-left" style="color:white;">
+                <label asp-for="PlatformId" placeholder="">Chose platform</label>
                 <select asp-for="PlatformId" class="form-group">
                     @foreach (var platform in Model.Platforms)
                     {
@@ -37,8 +37,8 @@
                     }
                 </select>
             </div>
-            <div class="form-group" style="color:white;">
-                <label asp-for="CategoryId" placeholder="Write some information"></label>
+            <div class="form-group float-left" style="color:white;">
+                <label asp-for="CategoryId" placeholder="Write some information">Chose game category</label>
                 <select asp-for="CategoryId" class="form-group">
                     @foreach (var category in Model.Categories)
                     {
@@ -46,7 +46,7 @@
                     }
                 </select>
             </div>
-            <input class="btn" style="background-color:white;" type="submit" value="Save" />
+            <input class="btn text-white float-right w-100" style="background-color:cornflowerblue;" type="submit" value="Save" />
         </form>
     </div>
 </div>

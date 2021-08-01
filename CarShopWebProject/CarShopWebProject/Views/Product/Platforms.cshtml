@@ -1,0 +1,30 @@
+﻿@model PlatformGamesViewModel
+
+<form method="get">
+    <div class="row">
+        <div class="form-group col-md-3">
+            <label asp-for="SearchTerm"></label>
+            <input asp-for="SearchTerm" placeholder="Search game..." />
+        </div>
+        <div class="form-group col-md-3">
+            <input type="submit" class="brn btn-primary" value="Search" />
+        </div>
+    </div>
+</form>
+
+<div class="card" style="width: 18rem;">
+    @foreach (var game in Model.Products)
+    {
+        <img src="@game.ImageUrl" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@game.Tittle</h5>
+            <p class="card-text">@game.Company</p>
+            <p class="card-text">@game.Description</p>
+            <div class="card-bottom">
+                <p class="card-price card-text">@game.Price<span>$</span></p>
+                <a href="#" class="btn btn-primary">Buy</a>
+            </div>
+        </div>
+    }
+</div>
+   

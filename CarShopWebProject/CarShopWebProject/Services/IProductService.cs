@@ -10,9 +10,11 @@ namespace CarShopWebProject.Services
     {
         public IEnumerable<CategoryFormModel> GetProductCategories();
 
+        public IEnumerable<ProductFormModel> GetProduct();
+        public IEnumerable<ProductFormModel> GetProductsByPlatformId(string id);
         public IEnumerable<PlatformFormModel> GetProductPlatforms();
 
-        void AddProduct(string title, int price, int year, string description,string imageUrl,string company,string categoryId);
+        void AddProduct(string title, int price, int year, string description,string imageUrl,string company,string categoryId,string platformId);
 
         //Tittle = game.Tittle,
         //     Price = game.Price,

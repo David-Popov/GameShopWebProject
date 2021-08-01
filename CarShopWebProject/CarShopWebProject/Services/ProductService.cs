@@ -16,7 +16,7 @@ namespace CarShopWebProject.Services
             this.db = db;
         }
 
-        public void AddProduct(string title, int price, int year, string description, string imageUrl, string company, string categoryId)
+        public void AddProduct(string title, int price, int year, string description, string imageUrl, string company, string categoryId,string platformId)
         {
             var addProduct = new Product
             {
@@ -26,12 +26,27 @@ namespace CarShopWebProject.Services
                 Description = description,
                 ImageUrl = imageUrl,
                 Company = company,
-                CategoryId = categoryId
+                CategoryId = categoryId,
+                PlatformId = platformId
             };
 
             db.Product.Add(addProduct);
             db.SaveChanges();
         }
+
+        public IEnumerable<ProductFormModel> GetProduct()
+        => db.Product
+            .Select(c => new ProductFormModel
+            {
+                Tittle = c.Tittle,
+                Price = c.Price,
+                Year = c.Year,
+                Description = c.Description,
+                ImageUrl = c.ImageUrl,
+                Company = c.Company,
+                CategoryId = c.CategoryId,
+                PlatformId = c.PlatformId
+            }).ToList();
 
         public IEnumerable<CategoryFormModel> GetProductCategories()
         => db.Category
@@ -48,6 +63,21 @@ namespace CarShopWebProject.Services
                    Id = x.Id,
                    Name = x.Name
                }).ToList();
-        
+
+        public IEnumerable<ProductFormModel> GetProductsByPlatformId(string id)
+        => db.Product
+            .Where(x => x.PlatformId == id)
+            .Select(c => new ProductFormModel
+            {
+                Tittle = c.Tittle,
+                Price = c.Price,
+                Year = c.Year,
+                Description = c.Description,
+                ImageUrl = c.ImageUrl,
+                Company = c.Company,
+                CategoryId = c.CategoryId,
+                PlatformId = c.PlatformId
+            }).ToList();
+            
     }
 }
