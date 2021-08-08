@@ -6,7 +6,7 @@ namespace CarShopWebProject.Models
 {
     public class AllGamesQueryModel
     {
-        public const int GamesPerPage = 3;
+        public const int GamesPerPage = 6;
 
         public int CurrentPage { get; set; } 
         public string SelectedCategory { get; set; }

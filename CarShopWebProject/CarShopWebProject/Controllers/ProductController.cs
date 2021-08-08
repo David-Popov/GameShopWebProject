@@ -52,14 +52,14 @@ namespace CarShopWebProject.Controllers
             else
             {
                 productService.AddProduct(
-            product.Tittle,
-            product.Price,
-            product.Year,
-            product.Description,
-            product.ImageUrl,
-            product.Company,
-            product.CategoryId,
-            product.PlatformId);
+                product.Tittle,
+                product.Price,
+                product.Year,
+                product.Description,
+                product.ImageUrl,
+                product.Company,
+                product.CategoryId,
+                product.PlatformId);
 
                 return RedirectToAction("Index", "Home");
             }
