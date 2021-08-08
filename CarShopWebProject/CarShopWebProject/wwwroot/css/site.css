@@ -95,3 +95,19 @@ card-bottom p {
     .dropdown-menu a {
         font-size: 18px;
     }
+
+    .card{
+        display:flex;
+        justify-content:space-around;
+        margin-left:2rem;
+        height:400px;
+    }
+
+    .card img{
+        max-width:300px;
+        max-height:160px;
+    }
+
+    .slide img{
+        max-height:640px;
+    }

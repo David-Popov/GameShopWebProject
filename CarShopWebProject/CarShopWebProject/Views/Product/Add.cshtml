@@ -5,31 +5,31 @@
         <form method="post">
             <h2 class="text-center text-dark" style="color:white; margin-top:5px;">Add Product</h2>
             <div class="form-group" style="color:white;">
-                <label asp-for="Tittle"></label>
+                <label class="text-black-50" asp-for="Tittle"></label>
                 <input asp-for="Tittle" class="form-control" placeholder="Write product tittle...">
             </div>
             <div class="form-group" style="color:white;">
-                <label asp-for="Price"></label>
+                <label class="text-black-50" asp-for="Price"></label>
                 <input asp-for="Price" class="form-control" placeholder="Write product price...">
             </div>
             <div class="form-group" style="color:white;">
-                <label asp-for="Year"></label>
+                <label class="text-black-50" asp-for="Year"></label>
                 <input asp-for="Year" class="form-control" placeholder="@DateTime.UtcNow.Year">
             </div>
             <div class="form-group" style="color:white;">
-                <label asp-for="ImageUrl"></label>
+                <label class="text-black-50" asp-for="ImageUrl"></label>
                 <input asp-for="ImageUrl" class="form-control" placeholder="Paste image URL">
             </div>
             <div class="form-group" style="color:white;">
-                <label asp-for="Company"></label>
+                <label class="text-black-50" asp-for="Company"></label>
                 <input asp-for="Company" class="form-control" placeholder="Write the company of the product">
             </div>
-            <div class="form-group" style="color:white;">
-                <label asp-for="Description" placeholder="Write some information"></label>
-                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            <div class="form-group" style="color:white;" >
+                <label class="text-black-50" asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control" rows="3" placeholder="Write some information"></textarea>
             </div>
             <div class="form-group float-left" style="color:white;">
-                <label asp-for="PlatformId" placeholder="">Chose platform</label>
+                <label asp-for="PlatformId" placeholder="" class="text-black-50">Chose platform</label>
                 <select asp-for="PlatformId" class="form-group">
                     @foreach (var platform in Model.Platforms)
                     {
@@ -38,7 +38,7 @@
                 </select>
             </div>
             <div class="form-group float-left" style="color:white;">
-                <label asp-for="CategoryId" placeholder="Write some information">Chose game category</label>
+                <label  asp-for="CategoryId" placeholder="Write some information" class="text-black-50" style="margin-left:10px;">Chose category</label>
                 <select asp-for="CategoryId" class="form-group">
                     @foreach (var category in Model.Categories)
                     {

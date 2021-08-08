@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
+<body style="background-color:#F8F8FF;">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-primary border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3" style="background-color:#7921EA;  font-family:'Popinz'; font-size:20px;">
             <div class="container">
-                <a class="navbar-brand text-white"  asp-area="" asp-controller="Home" asp-action="Index">Car Shop</a>
+                <a class="navbar-brand text-white"  asp-area="" asp-controller="Home" asp-action="Index">Game Shop</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,7 +19,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <div class="dropdown">
                         <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:20px; border:none;">
                             Platforms
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -33,8 +33,7 @@
                             </ul>
                         </div>
                     </div>
-                    <ul class="navbar-nav flex-grow-1">
-                       
+                    <ul class="navbar-nav flex-grow-1" style="font-family:'Popinz'">
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Product" asp-action="Add">Add</a>
                         </li>

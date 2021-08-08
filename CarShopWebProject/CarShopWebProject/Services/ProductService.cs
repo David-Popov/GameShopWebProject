@@ -64,9 +64,11 @@ namespace CarShopWebProject.Services
                    Name = x.Name
                }).ToList();
 
-        public IEnumerable<ProductFormModel> GetProductsByPlatformId(string id)
+        public IEnumerable<ProductFormModel> GetProductsByPlatformId(string id, AllGamesQueryModel query)
         => db.Product
             .Where(x => x.PlatformId == id)
+            .Skip((query.CurrentPage) * AllGamesQueryModel.GamesPerPage)
+            .Take(AllGamesQueryModel.GamesPerPage)
             .Select(c => new ProductFormModel
             {
                 Tittle = c.Tittle,

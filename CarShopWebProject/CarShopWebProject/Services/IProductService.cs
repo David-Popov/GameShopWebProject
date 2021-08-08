@@ -11,7 +11,7 @@ namespace CarShopWebProject.Services
         public IEnumerable<CategoryFormModel> GetProductCategories();
 
         public IEnumerable<ProductFormModel> GetProduct();
-        public IEnumerable<ProductFormModel> GetProductsByPlatformId(string id);
+        public IEnumerable<ProductFormModel> GetProductsByPlatformId(string id,AllGamesQueryModel query);
         public IEnumerable<PlatformFormModel> GetProductPlatforms();
 
         void AddProduct(string title, int price, int year, string description,string imageUrl,string company,string categoryId,string platformId);

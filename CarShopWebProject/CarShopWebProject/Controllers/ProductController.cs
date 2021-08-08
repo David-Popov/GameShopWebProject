@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace CarShopWebProject.Controllers
 {
@@ -42,7 +43,7 @@ namespace CarShopWebProject.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult Platforms(string id, string searchTerm)
+        public IActionResult Platforms(string id, [FromQuery]AllGamesQueryModel query)
         {
             var productQuerry = db.Product.AsQueryable();
 
@@ -52,15 +53,32 @@ namespace CarShopWebProject.Controllers
                 return BadRequest();
             }
 
-            var products = productService.GetProductsByPlatformId(id);
+            var products = productService.GetProductsByPlatformId(id,query);
 
-            if (!string.IsNullOrWhiteSpace(searchTerm))
+            if (!string.IsNullOrEmpty(query.SelectedCategory))
+            {
+                products = productQuerry
+               .Where(c => c.CategoryId == query.SelectedCategory && c.PlatformId == id)
+               .Select(x => new ProductFormModel
+               {
+                   Tittle = x.Tittle,
+                   Price = x.Price,
+                   Year = x.Year,
+                   Description = x.Description,
+                   ImageUrl = x.ImageUrl,
+                   Company = x.Company,
+                   CategoryId = x.CategoryId,
+                   PlatformId = x.PlatformId
+               }).ToList();
+            }
+
+            if (!string.IsNullOrWhiteSpace(query.SearchTerm))
             {
                 productQuerry = productQuerry.Where(x =>
-                x.Tittle.ToLower().Contains(searchTerm.ToLower()) ||
-                x.Company.ToLower().Contains(searchTerm.ToLower()));
+                x.Tittle.ToLower().Contains(query.SearchTerm.ToLower()) ||
+                x.Company.ToLower().Contains(query.SearchTerm.ToLower()));
 
-                 products = productQuerry
+                 products = productQuerry                  
                 .OrderByDescending(c => c.Id)
                 .Select(x => new ProductFormModel
                 {
@@ -75,11 +93,24 @@ namespace CarShopWebProject.Controllers
                 }).ToList();
             }
 
+            var gameCategory = db.Category
+                .Select(x => new CategoryFormModel
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                })
+                .ToList();
+
+
             if (products == null) return NotFound();
 
-            var viewmodel = new PlatformGamesViewModel();
+            var viewmodel = new AllGamesQueryModel();
+
+            viewmodel.Categories = gameCategory;
 
             viewmodel.Products = products;
+
+            viewmodel.CurrentPage = query.CurrentPage;
 
             ViewBag.Platforms = productService.GetProductPlatforms();
 
@@ -87,6 +118,7 @@ namespace CarShopWebProject.Controllers
             return View(viewmodel);
         }
 
+        
        
         private IEnumerable<CategoryFormModel> GetProductCategories()
          => db.Category
