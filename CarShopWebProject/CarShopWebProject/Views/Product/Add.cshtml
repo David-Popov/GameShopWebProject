@@ -7,26 +7,32 @@
             <div class="form-group" style="color:white;">
                 <label class="text-black-50" asp-for="Tittle"></label>
                 <input asp-for="Tittle" class="form-control" placeholder="Write product tittle...">
+                <span asp-validation-for="Tittle" class="small text-danger"></span>
             </div>
             <div class="form-group" style="color:white;">
                 <label class="text-black-50" asp-for="Price"></label>
                 <input asp-for="Price" class="form-control" placeholder="Write product price...">
+                <span asp-validation-for="Price" class="small text-danger"></span>
             </div>
             <div class="form-group" style="color:white;">
                 <label class="text-black-50" asp-for="Year"></label>
                 <input asp-for="Year" class="form-control" placeholder="@DateTime.UtcNow.Year">
+                <span asp-validation-for="Year" class="small text-danger"></span>
             </div>
             <div class="form-group" style="color:white;">
                 <label class="text-black-50" asp-for="ImageUrl"></label>
                 <input asp-for="ImageUrl" class="form-control" placeholder="Paste image URL">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
             </div>
             <div class="form-group" style="color:white;">
                 <label class="text-black-50" asp-for="Company"></label>
                 <input asp-for="Company" class="form-control" placeholder="Write the company of the product">
+                <span asp-validation-for="Company" class="small text-danger"></span>
             </div>
-            <div class="form-group" style="color:white;" >
+            <div class="form-group" style="color:white;">
                 <label class="text-black-50" asp-for="Description"></label>
                 <textarea asp-for="Description" class="form-control" rows="3" placeholder="Write some information"></textarea>
+                <span asp-validation-for="Description" class="small text-danger"></span>
             </div>
             <div class="form-group float-left" style="color:white;">
                 <label asp-for="PlatformId" placeholder="" class="text-black-50">Chose platform</label>

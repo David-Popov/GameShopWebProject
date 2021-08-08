@@ -24,6 +24,7 @@ namespace CarShopWebProject.Controllers
         public IActionResult Index()
         {
             ViewBag.Platforms = productService.GetProductPlatforms();
+
             var takeProduct = db
                 .Product
                 .OrderByDescending(c => c.Id)

@@ -1,4 +1,5 @@
 ﻿using CarShopWebProject.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,14 @@ namespace CarShopWebProject.Services
         public IEnumerable<ProductFormModel> GetProductsByPlatformId(string id,AllGamesQueryModel query);
         public IEnumerable<PlatformFormModel> GetProductPlatforms();
 
+        public IEnumerable<ProductFormModel> SelectByCategory(string id, [FromQuery] AllGamesQueryModel query);
+
+        public IEnumerable<ProductFormModel> SelectBySearchTerm([FromQuery] AllGamesQueryModel query);
+
+        public IEnumerable<CategoryFormModel> GetCategories();
+
         void AddProduct(string title, int price, int year, string description,string imageUrl,string company,string categoryId,string platformId);
 
-        //Tittle = game.Tittle,
-        //     Price = game.Price,
-        //     Year = game.Year,
-        //     Description = game.Description,
-        //     ImageUrl = game.ImageUrl,
-        //     Company = game.Company,
-        //     CategoryId = game.CategoryId
+       
     }
 }
