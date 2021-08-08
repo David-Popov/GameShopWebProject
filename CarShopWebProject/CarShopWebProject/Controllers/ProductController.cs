@@ -30,7 +30,18 @@ namespace CarShopWebProject.Controllers
         [HttpPost]
         public IActionResult Add(ProductFormModel product)
         {
-            if (ModelState.IsValid)
+            if (!this.db.Category.Any(c => c.Id.ToString() == product.CategoryId))
+            {
+                ModelState.AddModelError(nameof(product.CategoryId), "Category does not exist");
+            }
+
+            //!!!!
+            if (!this.db.Platform.Any(c => c.Id.ToString() == product.PlatformId))
+            {
+                ModelState.AddModelError(nameof(product.PlatformId), "Platform does not exist");
+            }
+
+            if (!ModelState.IsValid)
             {
                 product.Categories = productService.GetProductCategories();
                 product.Platforms = productService.GetProductPlatforms();
@@ -38,17 +49,21 @@ namespace CarShopWebProject.Controllers
 
                 return View(product);
             }
-            productService.AddProduct(
-              product.Tittle,
-              product.Price,
-              product.Year,
-              product.Description,
-              product.ImageUrl,
-              product.Company,
-              product.CategoryId,
-              product.PlatformId);
+            else
+            {
+                productService.AddProduct(
+            product.Tittle,
+            product.Price,
+            product.Year,
+            product.Description,
+            product.ImageUrl,
+            product.Company,
+            product.CategoryId,
+            product.PlatformId);
 
-            return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
+            }
+
         }
 
         public IActionResult Platforms(string id, [FromQuery] AllGamesQueryModel query)
