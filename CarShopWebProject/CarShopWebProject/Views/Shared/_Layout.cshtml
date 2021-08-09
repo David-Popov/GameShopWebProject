@@ -8,19 +8,19 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body style="background-color:#E6E6FA;">
+<body style="background-color:#241f24; height:100%;">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3" style="background-color:#ff3333;  font-family:'Popinz'; font-size:20px;">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light   box-shadow mb-3" style="border:none; background-color:#241f24;  font-family:'Popinz'; font-size:20px;">
             <div class="container">
-                <a class="navbar-brand text-white"  asp-area="" asp-controller="Home" asp-action="Index">Game Shop</a>
+                <a class="navbar-brand" style="color:#FC4445; font-family:Arial;"  asp-area="" asp-controller="Home" asp-action="Index">Game Shop</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <div class="dropdown">
-                        <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:20px; border:none;">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: Arial; color:#FC4445;; font-size: 20px; border: none;">
                             Platforms
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -28,18 +28,18 @@
                                 @foreach (var platformType in ViewBag.Platforms)
                                 {
                                     <li class="nav-item">
-                                        <a class="nav-link text-dark" asp-route-id="@platformType.Id" asp-controller="Product" asp-action="Platforms">@platformType.Name</a>
+                                        <a class="nav-link" style="color: black; font-family: Arial" asp-route-id="@platformType.Id" asp-controller="Product" asp-action="Platforms">@platformType.Name</a>
                                     </li>
                                 }
                             </ul>
                         </div>
                     </div>
-                    <ul class="navbar-nav flex-grow-1" style="font-family:'Popinz'">
+                    <ul class="navbar-nav flex-grow-1" style="font-family: Arial">
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Product" asp-action="Add">Add</a>
+                            <a class="nav-link " style="color: #FC4445;" asp-area="" asp-controller="Product" asp-action="Add">Add</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link " style="color:#FC4445;" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -53,9 +53,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted text-white" style="background-color: #ff3333">
+    <footer class="border-top footer text-muted text-white" style="background-color: #FC4445">
         <div class="container text-white">
-            &copy; 2021 - CarShopWebProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - GameShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

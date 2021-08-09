@@ -9,6 +9,7 @@ namespace CarShopWebProject.Models
         public const int GamesPerPage = 6;
 
         public int CurrentPage { get; set; } 
+        [Display(Name ="Selected Category")]
         public string SelectedCategory { get; set; }
         public IEnumerable<CategoryFormModel> Categories { get; set; } = new List<CategoryFormModel>();
         [Display(Name ="Search")]
