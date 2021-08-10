@@ -22,8 +22,6 @@ namespace CarShopWebProject.Controllers
         }
         public IActionResult Add()
         {
-           
-
             return View(new ProductFormModel { Categories = productService.GetProductCategories(), Platforms = productService.GetProductPlatforms() });
         }
 
@@ -35,7 +33,6 @@ namespace CarShopWebProject.Controllers
                 ModelState.AddModelError(nameof(product.CategoryId), "Category does not exist");
             }
 
-            //!!!!
             if (!this.db.Platform.Any(c => c.Id.ToString() == product.PlatformId))
             {
                 ModelState.AddModelError(nameof(product.PlatformId), "Platform does not exist");
@@ -45,7 +42,6 @@ namespace CarShopWebProject.Controllers
             {
                 product.Categories = productService.GetProductCategories();
                 product.Platforms = productService.GetProductPlatforms();
-                
 
                 return View(product);
             }
@@ -63,13 +59,11 @@ namespace CarShopWebProject.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
-
         }
 
         public IActionResult Platforms(string id, [FromQuery] AllGamesQueryModel query)
         {
             var productQuerry = db.Product.AsQueryable();
-
 
             if (id == null)
             {
@@ -107,7 +101,6 @@ namespace CarShopWebProject.Controllers
 
             var gameCategory = productService.GetCategories();
 
-
             if (products == null) return NotFound();
 
             var viewmodel = new AllGamesQueryModel();
@@ -117,9 +110,6 @@ namespace CarShopWebProject.Controllers
             viewmodel.Products = products;
 
             viewmodel.CurrentPage = query.CurrentPage;
-
-            
-
 
             return View(viewmodel);
         }
