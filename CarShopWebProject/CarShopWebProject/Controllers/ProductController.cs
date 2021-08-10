@@ -22,7 +22,7 @@ namespace CarShopWebProject.Controllers
         }
         public IActionResult Add()
         {
-            ViewBag.Platforms = productService.GetProductPlatforms();
+           
 
             return View(new ProductFormModel { Categories = productService.GetProductCategories(), Platforms = productService.GetProductPlatforms() });
         }
@@ -45,7 +45,7 @@ namespace CarShopWebProject.Controllers
             {
                 product.Categories = productService.GetProductCategories();
                 product.Platforms = productService.GetProductPlatforms();
-                ViewBag.Platforms = productService.GetProductPlatforms();
+                
 
                 return View(product);
             }
@@ -118,28 +118,11 @@ namespace CarShopWebProject.Controllers
 
             viewmodel.CurrentPage = query.CurrentPage;
 
-            ViewBag.Platforms = productService.GetProductPlatforms();
+            
 
 
             return View(viewmodel);
         }
 
-
-
-        //private IEnumerable<CategoryFormModel> GetProductCategories()
-        // => db.Category
-        //       .Select(x => new CategoryFormModel
-        //       {
-        //           Id = x.Id,
-        //           Name = x.Name
-        //       }).ToList();
-
-        //private IEnumerable<PlatformFormModel> GetProductPlatforms()
-        //=> db.Platform
-        //        .Select(x => new PlatformFormModel
-        //        {
-        //            Id = x.Id,
-        //            Name = x.Name
-        //        }).ToList();
     }
 }

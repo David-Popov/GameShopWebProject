@@ -8,40 +8,33 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body style="background-color:#241f24; height:100%;">
+<body style="background-color:#241f24;">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light   box-shadow mb-3" style="border:none; background-color:#241f24;  font-family:'Popinz'; font-size:20px;">
+        <div class="row text-center align-content-center justify-content-center" style="background-color:#FC4445;">
+                <img class="logo" style="margin-left:15px;" src="~/images/—Pngtree—vector video game icon_4101457.png" />
+                <div class="form-group col-md-3">
+                    <label style="color:#FC4445; font-family:Arial;" asp-=""></label>
+                    <input style="margin-top:25px; height:2.5rem; width:20rem;" placeholder="Search game..." />
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light   box-shadow mb-3" style="border:none; background-color:#FC4445;  font-family:'Popinz'; font-size:20px;">
             <div class="container">
-                <a class="navbar-brand" style="color:#FC4445; font-family:Arial;"  asp-area="" asp-controller="Home" asp-action="Index">Game Shop</a>
+                <a class="navbar-brand" style="color:white; font-family:Arial;"  asp-area="" asp-controller="Home" asp-action="Index">Game Shop</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: Arial; color:#FC4445;; font-size: 20px; border: none;">
-                            Platforms
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <ul style="list-style:none;">
-                                @foreach (var platformType in ViewBag.Platforms)
-                                {
-                                    <li class="nav-item">
-                                        <a class="nav-link" style="color: black; font-family: Arial" asp-route-id="@platformType.Id" asp-controller="Product" asp-action="Platforms">@platformType.Name</a>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                    </div>
-                    <ul class="navbar-nav flex-grow-1" style="font-family: Arial">
-                        <li class="nav-item">
-                            <a class="nav-link " style="color: #FC4445;" asp-area="" asp-controller="Product" asp-action="Add">Add</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " style="color:#FC4445;" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                   <partial name="_PlatformsPartial" />
+                   <ul class="navbar-nav flex-grow-1" style="font-family: Arial">
+                       <li class="nav-item">
+                           <a class="nav-link " style="color: white;" asp-controller="Product" asp-action="Add">Add</a>
+                       </li>
+                       <li class="nav-item">
+                           <a class="nav-link " style="color:white;" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                       </li>
+                      
+                       </ul>
                     <partial name="_LoginPartial" />
                 </div>
             </div>

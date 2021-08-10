@@ -13,7 +13,6 @@ namespace CarShopWebProject.Data
         public DbSet<Product> Product { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Platform> Platform { get; set; }
-        public DbSet<Admin> Admin { get; set; }
 
 
         public GameShopDbContext(DbContextOptions<GameShopDbContext> options)
@@ -21,14 +20,6 @@ namespace CarShopWebProject.Data
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<Admin>()
-                .HasOne<IdentityUser>()
-                .WithOne()
-                .HasForeignKey<Admin>(x => x.UserId);
-
-            base.OnModelCreating(builder);
-        }
+        
     }
 }

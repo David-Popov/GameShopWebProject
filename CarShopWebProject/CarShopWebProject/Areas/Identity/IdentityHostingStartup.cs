@@ -16,6 +16,8 @@ namespace CarShopWebProject.Areas.Identity
         {
             builder.ConfigureServices((context, services) => {
             });
+
+
         }
     }
 }

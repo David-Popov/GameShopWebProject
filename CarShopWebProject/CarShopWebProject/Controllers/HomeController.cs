@@ -23,7 +23,7 @@ namespace CarShopWebProject.Controllers
 
         public IActionResult Index()
         {
-            ViewBag.Platforms = productService.GetProductPlatforms();
+            
 
             var takeProduct = db
                 .Product
@@ -39,7 +39,7 @@ namespace CarShopWebProject.Controllers
                     CategoryId = x.CategoryId,
                     PlatformId = x.PlatformId
                 })
-                .Take(3)
+                .Take(6)
                 .ToList();
 
 
@@ -48,7 +48,7 @@ namespace CarShopWebProject.Controllers
 
         public IActionResult Privacy()
         {
-            ViewBag.Platforms = productService.GetProductPlatforms();
+            
             return View();
         }
 
