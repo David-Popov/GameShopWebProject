@@ -5,11 +5,9 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
+        
         <li class="nav-item">
-            <a class="nav-link " style="color:white;" asp-controller="Admin" asp-action="CreateAdmin">Admin</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white" style="color:white;" asp-controller="DeleteProduct" asp-action="Delete">Delete Product</a>
+            <a class="nav-link " style="color:white;" asp-controller="Admin" asp-action="CreateAdmin">Manage products</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>

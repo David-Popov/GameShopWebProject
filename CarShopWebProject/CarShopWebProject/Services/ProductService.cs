@@ -45,6 +45,21 @@ namespace CarShopWebProject.Services
                 })
                 .ToList();
 
+        public IEnumerable<Product> GetDbProduct(string id)
+         => db.Product
+            .Where(x => x.Id.ToString() == id)
+            .Select(c => new Product
+            {
+                Tittle = c.Tittle,
+                Price = c.Price,
+                Year = c.Year,
+                Description = c.Description,
+                ImageUrl = c.ImageUrl,
+                Company = c.Company,
+                CategoryId = c.CategoryId,
+                PlatformId = c.PlatformId
+            }).ToList();
+
         public IEnumerable<ProductFormModel> GetProduct()
         => db.Product
             .Select(c => new ProductFormModel

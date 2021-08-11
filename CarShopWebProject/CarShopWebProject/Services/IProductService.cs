@@ -1,4 +1,5 @@
-﻿using CarShopWebProject.Models;
+﻿using CarShopWebProject.Data;
+using CarShopWebProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace CarShopWebProject.Services
     public interface IProductService
     {
         public IEnumerable<CategoryFormModel> GetProductCategories();
+
+        public IEnumerable<Product> GetDbProduct(string id);
 
         public IEnumerable<DeleteProductModel> GetProducts();
 
