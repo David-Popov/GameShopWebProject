@@ -37,22 +37,8 @@ namespace CarShopWebProject.Controllers
 
         public IActionResult Delete() 
         {
-            var products = db.Product
-                .OrderBy(x => x.Year)
-                .Select(c => new DeleteProductModel
-                {
-                    Id = c.Id.ToString(),
-                    Tittle = c.Tittle,
-                    Company = c.Company,
-                    Description = c.Description,
-                    ImageUrl = c.ImageUrl,
-                    CategoryId = c.CategoryId,
-                    PlatformId = c.PlatformId,
-                    Price = c.Price,
-                    Year = c.Year
-                })
-                .ToList();
-
+           var products = productService.GetProduct();
+           
            return View(products);
         } 
 
@@ -66,26 +52,39 @@ namespace CarShopWebProject.Controllers
             db.Product.Remove(product);
             db.SaveChanges();
 
-            var products = db.Product
-               .OrderBy(x => x.Year)
-               .Select(c => new DeleteProductModel
-               {
-                   Id = c.Id.ToString(),
-                   Tittle = c.Tittle,
-                   Company = c.Company,
-                   Description = c.Description,
-                   ImageUrl = c.ImageUrl,
-                   CategoryId = c.CategoryId,
-                   PlatformId = c.PlatformId,
-                   Price = c.Price,
-                   Year = c.Year
-               })
-               .ToList();
+            var products = productService.GetProduct();
 
             return RedirectToAction("ManageProducts", "Admin");
         }
 
-        
+        public IActionResult EditProduct(string id)
+        {
+            var productForEdit = productService.GetDbProduct(id).FirstOrDefault();
+
+            return View(productForEdit);
+        }
+
+        [HttpPost]
+        public IActionResult EditProduct(EditFormModel product)
+        {
+            var productForEdit = productService.GetDbProduct(product.Id).FirstOrDefault();
+
+            productForEdit.Id = int.Parse(product.Id);
+            productForEdit.Tittle = product.Tittle;
+            productForEdit.Price = product.Price;
+            productForEdit.Year = product.Year;
+            productForEdit.Company = product.Company;
+            productForEdit.ImageUrl = product.ImageUrl;
+            productForEdit.Description = product.Description;
+
+            db.Attach(productForEdit);
+            db.Entry(productForEdit).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            db.SaveChanges();
+
+
+            return RedirectToAction("ManageProducts", "Admin");
+        }
+
         public IActionResult BackToList()
         {
             return RedirectToAction("ManageProducts", "Admin");
