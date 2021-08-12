@@ -1,4 +1,5 @@
 ﻿using CarShopWebProject.Data;
+using CarShopWebProject.Data.Models;
 using CarShopWebProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -16,6 +17,21 @@ namespace CarShopWebProject.Services
         public ProductService(GameShopDbContext db)
         {
             this.db = db;
+        }
+
+        public void AddGiftCard(string title, int price, string description, string imageUrl, string platformId)
+        {
+            var addGiftCard = new GiftCards
+            {
+                Tittle = title,
+                Price = price,
+                Description = description,
+                ImageUrl = imageUrl,
+                PlatformId = platformId
+            };
+
+            db.GiftCards.Add(addGiftCard);
+            db.SaveChanges();
         }
 
         public void AddProduct(string title, int price, int year, string description, string imageUrl, string company, string categoryId, string platformId)
@@ -57,6 +73,20 @@ namespace CarShopWebProject.Services
                 ImageUrl = c.ImageUrl,
                 Company = c.Company,
                 CategoryId = c.CategoryId,
+                PlatformId = c.PlatformId
+            }).ToList();
+
+        public IEnumerable<GiftCardFormModel> GetGiftCardByPlatformId(string id, AllGamesQueryModel query)
+        => db.GiftCards
+            .Where(x => x.PlatformId == id)
+            .Skip((query.CurrentPage) * AllGamesQueryModel.GamesPerPage)
+            .Take(AllGamesQueryModel.GamesPerPage)
+            .Select(c => new GiftCardFormModel
+            {
+                Tittle = c.Tittle,
+                Price = c.Price,
+                Description = c.Description,
+                ImageUrl = c.ImageUrl,
                 PlatformId = c.PlatformId
             }).ToList();
 

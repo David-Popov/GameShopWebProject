@@ -18,6 +18,8 @@ namespace CarShopWebProject.Services
 
         public IEnumerable<ProductFormModel> GetProduct();
         public IEnumerable<ProductFormModel> GetProductsByPlatformId(string id,AllGamesQueryModel query);
+        public IEnumerable<GiftCardFormModel> GetGiftCardByPlatformId(string id, AllGamesQueryModel query);
+
         public IEnumerable<PlatformFormModel> GetProductPlatforms();
 
         public IEnumerable<ProductFormModel> SelectByCategory(string id, [FromQuery] AllGamesQueryModel query);
@@ -28,6 +30,6 @@ namespace CarShopWebProject.Services
 
         void AddProduct(string title, int price, int year, string description,string imageUrl,string company,string categoryId,string platformId);
 
-       
+        void AddGiftCard(string title, int price, string description, string imageUrl,string platformId);
     }
 }

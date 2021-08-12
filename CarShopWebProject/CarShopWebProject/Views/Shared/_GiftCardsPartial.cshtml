@@ -1,20 +1,20 @@
 ﻿@inject IProductService service
 
-@{ 
+@{
     var platforms = service.GetProductPlatforms();
 }
 
 <div class="dropdown">
     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: Arial; color:slategrey; font-size: 20px; border: none;">
-        Games
+        Gift Cards
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <ul style="list-style:none;">
             @foreach (var platformType in platforms)
             {
                 <li class="nav-item">
-                    <a class="nav-link" style="color: black; font-family: Arial" asp-route-id="@platformType.Id" asp-controller="Product" asp-action="Platforms">@platformType.Name Games</a>
+                    <a class="nav-link" style="color: black; font-family: Arial" asp-route-id="@platformType.Id" asp-controller="GiftCard" asp-action="GiftCards">@platformType.Name GiftCards</a>
                 </li>
             }
         </ul>

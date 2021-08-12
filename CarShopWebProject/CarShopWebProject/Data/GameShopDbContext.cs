@@ -13,6 +13,7 @@ namespace CarShopWebProject.Data
         public DbSet<Product> Product { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Platform> Platform { get; set; }
+        public DbSet<GiftCards> GiftCards { get; set; }
 
 
         public GameShopDbContext(DbContextOptions<GameShopDbContext> options)

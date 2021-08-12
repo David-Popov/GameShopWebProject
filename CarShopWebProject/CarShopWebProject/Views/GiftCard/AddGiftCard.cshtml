@@ -1,0 +1,40 @@
+﻿@model GiftCardFormModel
+
+<div class="row" style="">
+    <div class="col-md-6 offset-md-3 col-sm-12">
+        <form method="post">
+            <h2 class="text-center" style="color:white;" margin-top:5px;">Add Product</h2>
+            <div class="form-group" style="color:white;">
+                <label class="" style="color:white;" asp-for="Tittle"></label>
+                <input asp-for="Tittle" class="form-control" placeholder="Write product tittle...">
+                <span asp-validation-for="Tittle" class="small text-danger"></span>
+            </div>
+            <div class="form-group" style="color:white;">
+                <label class="" style="color:white;" asp-for="Price"></label>
+                <input asp-for="Price" class="form-control" placeholder="Write product price...">
+                <span asp-validation-for="Price" class="small text-danger"></span>
+            </div>
+            <div class="form-group" style="color:white;">
+                <label class="" style="color:white;" asp-for="ImageUrl"></label>
+                <input asp-for="ImageUrl" class="form-control" placeholder="Paste image URL">
+                <span asp-validation-for="ImageUrl" class="small text-danger"></span>
+            </div>
+            <div class="form-group" style="color:white;">
+                <label class="" style="color:white;" asp-for="Description"></label>
+                <textarea asp-for="Description" class="form-control" rows="3" placeholder="Write some information"></textarea>
+                <span asp-validation-for="Description" class="small text-danger"></span>
+            </div>
+            <div class="form-group float-left" style="color:white;">
+                <label asp-for="PlatformId" placeholder="" class="" style="color:white;">Chose platform</label>
+                <select asp-for="PlatformId" class="form-group">
+                    @foreach (var platform in Model.Platforms)
+                    {
+                        <option value="@platform.Id">@platform.Name</option>
+                    }
+                </select>
+            </div>
+            <input class="btn  float-right w-100" style="background-color:white; color:slategrey" type="submit" value="Save" />
+        </form>
+    </div>
+</div>
+

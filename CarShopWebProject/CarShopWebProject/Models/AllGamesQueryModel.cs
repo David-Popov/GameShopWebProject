@@ -17,5 +17,6 @@ namespace CarShopWebProject.Models
 
         public ProductSorting Sorting { get; set; }
         public IEnumerable<ProductFormModel> Products { get; set; } = new List<ProductFormModel>();
+        public IEnumerable<GiftCardFormModel> GiftCards { get; set; } = new List<GiftCardFormModel>();
     }
 }

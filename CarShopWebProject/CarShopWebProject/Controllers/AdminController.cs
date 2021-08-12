@@ -20,6 +20,13 @@ namespace CarShopWebProject.Controllers
             return View();
         }
 
+        
+
+        public IActionResult AddProductPage()
+        {
+            return View();
+        }
+
         public IActionResult ManageProducts()
         {
             var prodcutList = db.Product;

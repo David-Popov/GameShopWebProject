@@ -10,7 +10,7 @@
             <a class="nav-link " style="color: slategrey;" asp-controller="Admin" asp-action="CreateAdmin">Manage products</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " style="color: slategrey;" asp-controller="Product" asp-action="Add">Add</a>
+            <a class="nav-link " style="color: slategrey;" asp-controller="Admin" asp-action="AddProductPage">Add Product</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color: slategrey;" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity.Name</a>
@@ -21,6 +21,7 @@
             </form>
         </li>
     }
+
     else
     {
         <li class="nav-item">
