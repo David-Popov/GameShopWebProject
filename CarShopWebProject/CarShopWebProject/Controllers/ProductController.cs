@@ -1,6 +1,7 @@
 ﻿using CarShopWebProject.Data;
 using CarShopWebProject.Models;
 using CarShopWebProject.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,8 @@ namespace CarShopWebProject.Controllers
             this.db = db;
             this.productService = productService;
         }
+
+        [Authorize]
         public IActionResult Add()
         {
             return View(new ProductFormModel { Categories = productService.GetProductCategories(), Platforms = productService.GetProductPlatforms() });

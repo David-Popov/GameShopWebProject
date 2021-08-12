@@ -4,7 +4,7 @@
 <form method="get">
     <div class="row">
         <div class="form-group float-left" style="color:white;">
-            <label class="" style="color:#FC4445; font-family:Arial;" asp-for="SelectedCategory"></label>
+            <label class="" style="color:white; font-family:Arial;" asp-for="SelectedCategory"></label>
             <select asp-for="SelectedCategory" class="form-group">
                 @foreach (var category in Model.Categories)
                 {
@@ -13,10 +13,10 @@
             </select>
         </div>
         <div class="form-group col-md-3">
-            <label style="color:#FC4445; font-family:Arial;" asp-for="SearchTerm"></label>
+            <label style="color:white; font-family:Arial;" asp-for="SearchTerm"></label>
             <input asp-for="SearchTerm" placeholder="Search game..." />
         </div>
-        <input type="submit" class="brn" style="background-color:#FC4445; font-family:Arial; width:6rem; height:2rem; color:white;" value="Search" />
+        <input type="submit" class="brn" style="background-color:white; font-family:Arial; width:6rem; height:2rem; color:slategrey;" value="Search" />
     </div>
     
 </form>
@@ -32,10 +32,10 @@
 <div class="row mb-3">
 
     <div class="col-md-6">
-        <a class="btn" style="background-color:#FC4445;" asp-controller="Product" asp-action="Platforms" asp-route-currentPage="@previousPage"><<</a>
+        <a class="btn" style="background-color:white;" asp-controller="Product" asp-action="Platforms" asp-route-currentPage="@previousPage"><<<</a>
     </div>
     <div class="col-md-6">
-        <a class="btn float-right" style="background-color:#FC4445;" asp-controller="Product" asp-action="Platforms" asp-route-currentPage="@(Model.CurrentPage+1)">>></a>
+        <a class="btn float-right" style="background-color:white;" asp-controller="Product" asp-action="Platforms" asp-route-currentPage="@(Model.CurrentPage+1)">>>></a>
     </div>
 </div>
 
