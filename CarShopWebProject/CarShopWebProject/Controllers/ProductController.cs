@@ -29,6 +29,8 @@ namespace CarShopWebProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
+        [AutoValidateAntiforgeryToken]
         public IActionResult Add(ProductFormModel product)
         {
             if (!this.db.Category.Any(c => c.Id.ToString() == product.CategoryId))
