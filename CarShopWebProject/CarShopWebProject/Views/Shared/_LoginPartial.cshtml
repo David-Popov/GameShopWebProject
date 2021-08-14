@@ -5,10 +5,12 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
-
-        <li class="nav-item">
-            <a class="nav-link " style="color: slategrey;" asp-controller="Admin" asp-action="CreateAdmin">Manage products</a>
-        </li>
+        if (User.IsAdmin())
+        {
+            <li class="nav-item">
+                <a class="nav-link " style="color: slategrey;" asp-controller="Admin" asp-action="CreateAdmin">Manage products</a>
+            </li>
+        }
         <li class="nav-item">
             <a class="nav-link " style="color: slategrey;" asp-controller="Admin" asp-action="AddProductPage">Add Product</a>
         </li>
