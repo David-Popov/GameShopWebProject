@@ -19,9 +19,7 @@ namespace CarShopWebProject.Controllers
         {
             return View();
         }
-
-        
-
+  
         public IActionResult AddProductPage()
         {
             return View();

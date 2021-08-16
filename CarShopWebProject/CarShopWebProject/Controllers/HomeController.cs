@@ -58,12 +58,5 @@ namespace CarShopWebProject.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        private IEnumerable<PlatformFormModel> GetProductPlatforms()
-       => db.Platform
-               .Select(x => new PlatformFormModel
-               {
-                   Id = x.Id,
-                   Name = x.Name
-               }).ToList();
     }
 }
