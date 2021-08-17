@@ -1,6 +1,7 @@
 using CarShopWebProject.Data;
 using CarShopWebProject.Infrastructure;
 using CarShopWebProject.Services;
+using CloudinaryDotNet;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,7 +28,6 @@ namespace CarShopWebProject
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<GameShopDbContext>(options =>
@@ -35,7 +35,7 @@ namespace CarShopWebProject
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => 
+            services.AddDefaultIdentity<IdentityUser>(options =>
             {
                 options.SignIn.RequireConfirmedAccount = false;
             })
@@ -49,10 +49,17 @@ namespace CarShopWebProject
                 options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
             });
 
+            Account account = new Account(
+            "dw8kb1m2o",
+            "734844437742397",
+            "fUQcM3P13ZMQy9pkrdrSRYJCz0Q");
 
+            Cloudinary cloudinary = new Cloudinary(account);
+
+            services.AddScoped<Cloudinary>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.PrepareDatabase();
