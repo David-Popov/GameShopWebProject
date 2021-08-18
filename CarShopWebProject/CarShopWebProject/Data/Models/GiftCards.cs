@@ -13,7 +13,7 @@ namespace CarShopWebProject.Data.Models
         [MaxLength(40)]
         public string Tittle { get; set; }
         [Required]
-        [Range(15, 180)]
+        [Range(5, 180)]
         public int Price { get; set; }
         [Required]
         public string ImageUrl { get; set; }

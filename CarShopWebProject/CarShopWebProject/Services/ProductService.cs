@@ -158,6 +158,7 @@ namespace CarShopWebProject.Services
                 PlatformId = c.PlatformId
             }).ToList();
 
+
         public IEnumerable<ProductFormModel> SelectByCategory(string id, [FromQuery] AllGamesQueryModel query)
         =>
             db.Product.AsQueryable()

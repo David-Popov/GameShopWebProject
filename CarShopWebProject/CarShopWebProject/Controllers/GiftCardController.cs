@@ -28,6 +28,14 @@ namespace CarShopWebProject.Controllers
         [HttpPost]
         public IActionResult AddGiftCard(GiftCardFormModel giftcard)
         {
+            foreach (var products in db.GiftCards)
+            {
+                if (products.Tittle == giftcard.Tittle)
+                {
+                    ModelState.AddModelError(nameof(giftcard.Tittle), "This gift card already exists");
+                }
+            }
+
             if (!this.db.Platform.Any(c => c.Id.ToString() == giftcard.PlatformId))
             {
                 ModelState.AddModelError(nameof(giftcard.PlatformId), "Platform does not exist");

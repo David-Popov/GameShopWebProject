@@ -32,6 +32,13 @@ namespace CarShopWebProject.Controllers
         [Authorize]
         public IActionResult Add(ProductFormModel product)
         {
+            foreach (var products in db.Product)
+            {
+                if (products.Tittle == product.Tittle)
+                {
+                    ModelState.AddModelError(nameof(product.Tittle), "This tittle already exists");
+                }
+            }
             if (!this.db.Category.Any(c => c.Id.ToString() == product.CategoryId))
             {
                 ModelState.AddModelError(nameof(product.CategoryId), "Category does not exist");

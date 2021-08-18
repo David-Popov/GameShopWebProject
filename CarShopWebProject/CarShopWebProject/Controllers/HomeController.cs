@@ -23,7 +23,6 @@ namespace CarShopWebProject.Controllers
 
         public IActionResult Index()
         {
-            
 
             var takeProduct = db
                 .Product
@@ -41,7 +40,6 @@ namespace CarShopWebProject.Controllers
                 })
                 .Take(6)
                 .ToList();
-
 
             return View(takeProduct);
         }
